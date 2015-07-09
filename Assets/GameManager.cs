@@ -32,9 +32,11 @@ public class GameManager : MonoBehaviour {
 		return PlayerPrefs.GetInt (HighScoreKey, 0);
 	}
 
-	void SetHighScore() {
-		PlayerPrefs.SetInt (HighScoreKey, CurrentScore);
-		PlayerPrefs.Save ();
+	void SetHighScore(int score) {
+		if (score > GetHighScore ()) {
+			PlayerPrefs.SetInt (HighScoreKey, CurrentScore);
+			PlayerPrefs.Save ();
+		}
 	}
 
 	public void AddScore() {
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour {
 		gameState = false;
 		gameoverTextObj.GetComponent<Text> ().enabled = true;
 		gameoverText.text = "GAMEOVER\nYour score is " + CurrentScore + ".";
-		SetHighScore ();
+		SetHighScore (CurrentScore);
 	}
 
 }
