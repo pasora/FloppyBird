@@ -16,7 +16,7 @@ public class Floppy : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (Input.GetMouseButtonDown (0)) {
-			GetComponent<Rigidbody2D>().AddForce (Vector2.up * 70000);
+			GetComponent<Rigidbody2D>().velocity = Vector2.up * 1500;
 		}
 	}
 
