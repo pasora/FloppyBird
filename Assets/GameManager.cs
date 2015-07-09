@@ -4,19 +4,24 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
+	bool gameState = true;
 	int CurrentScore = 0;
 	string HighScoreKey = "highScore"; 
-	public Text label;
-	 
+	public Text scoreText;
+	public GameObject gameoverTextObj;
+	public Text gameoverText;
+
 	// Use this for initialization
 	void Start () {
+		gameoverTextObj.GetComponent<Text> ().enabled = false;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		AddScore ();
-	
+		if (gameState) {
+			AddScore ();
+		}
 	}
 
 	int GetHighScore() {
@@ -28,14 +33,16 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.Save ();
 	}
 
-	void AddScore() {
+	public void AddScore() {
 		CurrentScore++;
-		label.text = "Score: " + CurrentScore;
+		scoreText.text = "Score: " + CurrentScore;
 	}
 
-	void OnColissionEnter2D(Collision2D collision) {
-		if (collision.gameObject.name == "Wall") {
-
-		}
+	public void ChangeGameoverState() {
+		gameState = false;
+		gameoverTextObj.GetComponent<Text> ().enabled = true;
+		gameoverText.text = "GAMEOVER\nYour score is " + CurrentScore + ".";
+		SetHighScore ();
 	}
+
 }
