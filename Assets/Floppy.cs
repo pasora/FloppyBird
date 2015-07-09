@@ -18,4 +18,14 @@ public class Floppy : MonoBehaviour {
 		transform.Translate (transform.up * FloppySpeed);
 	
 	}
+
+	void OnColisionEnter2D(Collision2D collision) {
+		GameObject go = GameObject.Find ("GameObject");
+		if (collision.gameObject.name == "Top" || collision.gameObject.name == "Bottom") {
+			if (go != null) {
+				GameManager gm = go.GetComponent (typeof(GameManager)) as GameManager;
+				gm.ChangeGameoverState ();
+			}
+		}
+	}
 }
