@@ -370,8 +370,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 390, y: 540}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 340, y: 540.000122}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1094219050
 MonoBehaviour:
@@ -398,7 +398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'High Score '
+  m_Text: 
 --- !u!222 &1094219051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -545,8 +545,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1419583443}
-  - 114: {fileID: 1419583444}
   - 26: {fileID: 1419583446}
+  - 114: {fileID: 1419583444}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38d395f6bcf1458fba4566002685f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  label: {fileID: 1094219050}
 --- !u!26 &1419583446
 ParticleRenderer:
   m_ObjectHideFlags: 0

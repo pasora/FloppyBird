@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (gameState) {
 			AddScore ();
+		} else {
+			if (Input.GetMouseButtonDown(0)) {
+				Application.LoadLevel("Title");
+			}
 		}
 	}
 
