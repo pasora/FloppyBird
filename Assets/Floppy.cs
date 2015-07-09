@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Floppy : MonoBehaviour {
-	float FloppySpeed = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -11,21 +11,29 @@ public class Floppy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			FloppySpeed = 20;
-		}
-		FloppySpeed -= 0.5f;
-		transform.Translate (transform.up * FloppySpeed);
 	
 	}
 
-	void OnColisionEnter2D(Collision2D collision) {
+	void FixedUpdate() {
+		if (Input.GetMouseButtonDown (0)) {
+			GetComponent<Rigidbody2D>().AddForce (Vector2.up * 3000);
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
 		GameObject go = GameObject.Find ("GameObject");
-		if (collision.gameObject.name == "Top" || collision.gameObject.name == "Bottom") {
+		if (collision.gameObject.name == "Top") {
 			if (go != null) {
 				GameManager gm = go.GetComponent (typeof(GameManager)) as GameManager;
 				gm.ChangeGameoverState ();
 			}
 		}
+		if (collision.gameObject.name == "Bottom") {
+			if (go != null) {
+				GameManager gm = go.GetComponent (typeof(GameManager)) as GameManager;
+				gm.ChangeGameoverState ();
+			}
+		}
+
 	}
 }
