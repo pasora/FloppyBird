@@ -8,22 +8,23 @@ public class GameManager : MonoBehaviour {
 	int CurrentScore = 0;
 	public int frame;
 	public int count;
-	string HighScoreKey = "highScore"; 
+	string HighScoreKey = "highScore";
+	public Canvas canvas;
 	public Text scoreText;
 	public GameObject gameoverTextObj;
 	public Text gameoverText;
-	const int MAGNET_NUM = 10;
 	public GameObject MagnetPrefab;
-	GameObject[] magnet = new GameObject[MAGNET_NUM];
+	GameObject[] magnet = new GameObject[10000];
+	int i = 0;
 
 	// Use this for initialization
 	void Start () {
-		gameoverTextObj.GetComponent<Text> ().enabled = false;	
+		gameoverTextObj.GetComponent<Text> ().enabled = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		int i = 0;
 		frame++;
 		if (gameState) {
 			AddScore ();
@@ -33,8 +34,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		if (i < MAGNET_NUM && frame % count == 0 ) {
-			magnet[i] = (GameObject)Instantiate (MagnetPrefab, new Vector2 (10, Random.Range (-10, 5)), Quaternion.identity);
+		if (frame % count == 0 ) {
+			magnet[i] = (GameObject)Instantiate (MagnetPrefab);
+			magnet[i].transform.SetParent(canvas.transform);
+			magnet[i].transform.localPosition = new Vector3(600, Random.Range(-960, 960), 0);
 			i++;
 		}
 	}
@@ -50,11 +53,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void AddScore() {
+	void AddScore() {
 		if (frame % count == 0) {
 			CurrentScore++;
 		}
-		scoreText.text = "Score: " + CurrentScore ;
+		scoreText.text = "Score: " + CurrentScore;
 	}
 
 	public void ChangeGameoverState() {
