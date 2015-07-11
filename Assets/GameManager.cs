@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour {
 		if (gameState) {
 			AddScore ();
 		} else {
-			if (Input.GetMouseButtonDown(0)) {
+			//if (Input.GetMouseButtonDown(0)) {
+			if (Input.GetTouch(0).phase == TouchPhase.Began) {
 				Application.LoadLevel("Title");
 			}
 		}

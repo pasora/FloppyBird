@@ -15,7 +15,8 @@ public class Floppy : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (Input.GetMouseButtonDown (0)) {
+		//if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetTouch(0).phase == TouchPhase.Began) {
 			GetComponent<Rigidbody2D>().velocity = Vector2.up * 1500;
 		}
 	}
