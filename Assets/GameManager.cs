@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour {
 	bool gameState = true;
 	int CurrentScore = 0;
@@ -20,7 +19,6 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gameoverTextObj.GetComponent<Text> ().enabled = false;
-
 	}
 	
 	// Update is called once per frame
@@ -29,13 +27,12 @@ public class GameManager : MonoBehaviour {
 		if (gameState) {
 			AddScore ();
 		} else {
-			//if (Input.GetMouseButtonDown(0)) {
 			if (Input.GetTouch(0).phase == TouchPhase.Began) {
 				Application.LoadLevel("Title");
 			}
 		}
 
-		if (frame % count == 0 ) {
+		if (gameState && frame % count == 0 ) {
 			magnet[i] = (GameObject)Instantiate (MagnetPrefab);
 			magnet[i].transform.SetParent(canvas.transform);
 			magnet[i].transform.localPosition = new Vector3(600, Random.Range(-960, 960), 0);
@@ -67,5 +64,4 @@ public class GameManager : MonoBehaviour {
 		gameoverText.text = "GAMEOVER\nYour score is " + CurrentScore + ".";
 		SetHighScore (CurrentScore);
 	}
-
 }
