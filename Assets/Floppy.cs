@@ -15,7 +15,6 @@ public class Floppy : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		//if (Input.GetMouseButtonDown (0)) {
 		if (Input.GetTouch(0).phase == TouchPhase.Began) {
 			GetComponent<Rigidbody2D>().velocity = Vector2.up * 1500;
 		}
@@ -24,6 +23,7 @@ public class Floppy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		GameObject go = GameObject.Find ("GameObject");
 		GameManager gm = go.GetComponent (typeof(GameManager)) as GameManager;
+		Destroy (collision.gameObject);
 		gm.ChangeGameoverState ();
 	}
 }
