@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frame: 0
-  count: 300
+  count: 250
   canvas: {fileID: 250460528}
   scoreText: {fileID: 1955709898}
   gameoverTextObj: {fileID: 738091398}
