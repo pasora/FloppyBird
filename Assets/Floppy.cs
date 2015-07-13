@@ -11,13 +11,13 @@ public class Floppy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-
-	void FixedUpdate() {
 		if (Input.GetTouch(0).phase == TouchPhase.Began) {
 			GetComponent<Rigidbody2D>().velocity = Vector2.up * 1500;
 		}
+	}
+
+	void FixedUpdate() {
+
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
